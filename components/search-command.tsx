@@ -96,11 +96,6 @@ export function SearchCommand() {
         <CardTitle className="flex items-center gap-2">
           <Search className="w-5 h-5" />
           Torre Profile Search
-          <Badge variant="secondary" className="ml-auto">
-            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-              <span className="text-xs">⌘</span>K
-            </kbd>
-          </Badge>
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -136,7 +131,7 @@ export function SearchCommand() {
               <div className="space-y-4">
                 <h3 className="font-medium">Search Results</h3>
                 {results.map((profile) => (
-                  <div key={profile.ardaId} className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded" onClick={() => handleUserSelect(profile)} >
+                  <div key={profile.ardaId} className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded cursor-pointer" onClick={() => handleUserSelect(profile)} >
                     <img 
                       src={profile.imageUrl || "./placeholder-user.jpg" } 
                       alt={profile.name}

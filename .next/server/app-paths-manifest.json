@@ -1,3 +1,4 @@
 {
+  "/api/genome/route": "app/api/genome/route.js",
   "/page": "app/page.js"
 }
