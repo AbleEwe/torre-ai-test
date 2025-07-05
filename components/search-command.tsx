@@ -12,18 +12,15 @@ import { useUser } from "@/context/userContext"
 
 
 export function SearchCommand() {
-  const [open, setOpen] = useState(false)
   const [query, setQuery] = useState("")
   const [results, setResults] = useState<UserProfile[]>([])
   const [loading, setLoading] = useState(false)
   const [searched, setSearched] = useState(false)
-  const [showResults, setShowResults] = useState(true)
   const { setSelectedUser, fetchGenomeData } = useUser()
 
 
   const handleUserSelect = async (user: UserProfile) => {
     setSelectedUser(user)
-    setShowResults(false)
     await fetchGenomeData(user.username) 
   }
 
