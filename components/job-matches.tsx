@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { Flame, MapPin, Building, Clock, ExternalLink, Info } from "lucide-react"
+import { useUser } from "@/context/userContext"
 
 interface JobMatch {
   id: string
@@ -73,12 +74,31 @@ const mockJobMatches: JobMatch[] = [
 
 export function JobMatches() {
   const [selectedMatch, setSelectedMatch] = useState<string | null>(null)
+  const { genomeData } = useUser()
 
   const getMatchBadge = (score: number) => {
     if (score >= 90) return { label: "🔥 Hot Match", variant: "destructive" as const }
     if (score >= 80) return { label: "⭐ Great Match", variant: "default" as const }
     if (score >= 70) return { label: "👍 Good Match", variant: "secondary" as const }
     return { label: "💡 Potential Match", variant: "outline" as const }
+  }
+
+  if (!genomeData) {
+    return (
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Flame className="w-5 h-5" />
+            Job Matches
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="text-center py-8 text-muted-foreground">
+            No data available
+          </div>
+        </CardContent>
+      </Card>
+    )
   }
 
   return (
