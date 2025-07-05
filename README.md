@@ -55,3 +55,20 @@ Repository: https://github.com/AbleEwe/torre-ai-test
 
 #### Testing
 - Add unit and integration tests
+
+## Architecture
+
+Core Structure
+App Router-Centric Design: Leverages Next.js 13+ App Router for:
+
+Route handling (page.tsx as entry points)
+
+API endpoint colocation (app/api/genome/route.ts)
+
+Streamlined layout management (layout.tsx)
+
+State Management:
+
+context/userContext.tsx: Centralizes user/search state
+
+React hooks for local component state
